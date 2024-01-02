@@ -405,8 +405,14 @@ function getFalsyValuesCount(/* arr */) {
  *                              [0,0,0,1,0],
  *                              [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  return Array(n)
+    .fill()
+    .map((elem, i) =>
+      Array(n)
+        .fill(0)
+        .fill(1, i, i + 1)
+    );
 }
 
 /**
@@ -436,8 +442,15 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  return arr.map((elem) => {
+    if (elem.toString(16).length < 6) {
+      return `#${'0'.repeat(6 - elem.toString(16).length)}${elem
+        .toString(16)
+        .toUpperCase()}`;
+    }
+    return `#${elem.toString(16).toUpperCase()}`;
+  });
 }
 
 /**
